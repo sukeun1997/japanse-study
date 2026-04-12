@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import type { Phrase } from "../types";
 import { loadPhrases } from "../lib/phrases";
 import { useStore } from "../lib/store";
+import { speak } from "../lib/tts";
 
 export default function Showcase() {
   const { id } = useParams<{ id: string }>();
@@ -19,6 +20,11 @@ export default function Showcase() {
       setPhrase(found ?? null);
     });
   }, [id]);
+
+  useEffect(() => {
+    if (phrase) speak(phrase.kana, settings.ttsRate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phrase?.id]);
 
   if (phrase === undefined) {
     return (
@@ -89,10 +95,11 @@ export default function Showcase() {
           </p>
         )}
 
-        {/* 재생 버튼 — Day 6에 onClick 배선 */}
+        {/* 재생 버튼 */}
         <button
           type="button"
           aria-label="재생"
+          onClick={() => speak(phrase.kana, settings.ttsRate)}
           className="mt-6 flex h-16 w-16 items-center justify-center rounded-full bg-sky-500 text-2xl text-white shadow-lg transition-colors hover:bg-sky-600 active:scale-95"
         >
           🔊

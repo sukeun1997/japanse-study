@@ -3,6 +3,7 @@ import { loadPhrases } from "../lib/phrases";
 import { buildQueue, type QueueItem } from "../lib/studyQueue";
 import { useStore } from "../lib/store";
 import StudyCard from "../components/StudyCard";
+import { speak } from "../lib/tts";
 
 export default function Study() {
   const [queue, setQueue] = useState<QueueItem[]>([]);
@@ -11,6 +12,7 @@ export default function Study() {
   const progress = useStore((s) => s.progress);
   const markKnown = useStore((s) => s.markKnown);
   const markWrong = useStore((s) => s.markWrong);
+  const settings = useStore((s) => s.settings);
 
   useEffect(() => {
     loadPhrases().then((all) => {
@@ -67,7 +69,7 @@ export default function Study() {
       <StudyCard
         key={`${current.phrase.id}-${idx}`}
         phrase={current.phrase}
-        onPlay={() => { /* Day 6에서 TTS 연결 */ }}
+        onPlay={() => speak(current.phrase.kana, settings.ttsRate)}
       />
 
       <div className="flex gap-3 mt-2">

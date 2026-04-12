@@ -3,6 +3,7 @@ import type { Phrase } from "../types";
 import { loadPhrases } from "../lib/phrases";
 import { useStore } from "../lib/store";
 import PhraseCard from "../components/PhraseCard";
+import { speak } from "../lib/tts";
 
 export default function Favorites() {
   const [phrases, setPhrases] = useState<Phrase[]>([]);
@@ -37,6 +38,7 @@ export default function Favorites() {
             phrase={phrase}
             starred={!!progress[phrase.id]?.starred}
             onStar={() => toggleStar(phrase.id)}
+            onPlay={() => speak(phrase.kana, settings.ttsRate)}
             showRomaji={settings.showRomaji}
           />
         ))

@@ -5,6 +5,7 @@ import { loadPhrases } from "../lib/phrases";
 import { useStore } from "../lib/store";
 import CategoryTabs from "../components/CategoryTabs";
 import PhraseCard from "../components/PhraseCard";
+import { speak } from "../lib/tts";
 
 type AllOrCategory = "all" | CategoryId;
 
@@ -68,12 +69,13 @@ export default function Browse() {
           </p>
         )}
 
-        {filtered.map((phrase) => (
+        {filtered.map((p) => (
           <PhraseCard
-            key={phrase.id}
-            phrase={phrase}
-            starred={!!progress[phrase.id]?.starred}
-            onStar={() => toggleStar(phrase.id)}
+            key={p.id}
+            phrase={p}
+            starred={!!progress[p.id]?.starred}
+            onStar={() => toggleStar(p.id)}
+            onPlay={() => speak(p.kana, settings.ttsRate)}
             showRomaji={settings.showRomaji}
           />
         ))}

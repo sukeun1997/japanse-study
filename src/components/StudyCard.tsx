@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Phrase } from "../types";
 import { useStore } from "../lib/store";
 
@@ -10,6 +10,11 @@ interface StudyCardProps {
 export default function StudyCard({ phrase, onPlay }: StudyCardProps) {
   const [revealed, setRevealed] = useState(false);
   const showRomaji = useStore((s) => s.settings.showRomaji);
+
+  useEffect(() => {
+    if (revealed) onPlay();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [revealed, phrase.id]);
 
   return (
     <div

@@ -1,9 +1,20 @@
+import { useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { Settings as SettingsIcon } from "lucide-react";
 import BottomNav from "./components/BottomNav";
+import { primeTts } from "./lib/tts";
 
 export default function App() {
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    function handleFirstPointer() {
+      primeTts();
+      window.removeEventListener("pointerdown", handleFirstPointer);
+    }
+    window.addEventListener("pointerdown", handleFirstPointer);
+    return () => window.removeEventListener("pointerdown", handleFirstPointer);
+  }, []);
   const showChrome = !pathname.startsWith("/showcase");
   return (
     <div className="relative mx-auto flex h-full max-w-lg flex-col">

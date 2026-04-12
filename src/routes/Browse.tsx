@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Phrase } from "../types";
 import type { CategoryId } from "../types";
 import { loadPhrases } from "../lib/phrases";
+import { useStore } from "../lib/store";
 import CategoryTabs from "../components/CategoryTabs";
 import PhraseCard from "../components/PhraseCard";
 
@@ -12,6 +13,9 @@ export default function Browse() {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<AllOrCategory>("all");
   const [loading, setLoading] = useState(true);
+  const progress = useStore((s) => s.progress);
+  const toggleStar = useStore((s) => s.toggleStar);
+  const settings = useStore((s) => s.settings);
 
   useEffect(() => {
     loadPhrases()
@@ -65,7 +69,13 @@ export default function Browse() {
         )}
 
         {filtered.map((phrase) => (
-          <PhraseCard key={phrase.id} phrase={phrase} />
+          <PhraseCard
+            key={phrase.id}
+            phrase={phrase}
+            starred={!!progress[phrase.id]?.starred}
+            onStar={() => toggleStar(phrase.id)}
+            showRomaji={settings.showRomaji}
+          />
         ))}
       </div>
     </div>

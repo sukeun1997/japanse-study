@@ -1,0 +1,17 @@
+[
+  { "id": "b-001", "ko": "안녕하세요", "ja": "こんにちは", "kana": "こんにちは", "romaji": "konnichiwa", "category": "basics", "priority": 1 },
+  { "id": "b-002", "ko": "감사합니다", "ja": "ありがとうございます", "kana": "ありがとうございます", "romaji": "arigatou gozaimasu", "category": "basics", "priority": 1 },
+  { "id": "b-003", "ko": "죄송합니다", "ja": "すみません", "kana": "すみません", "romaji": "sumimasen", "category": "basics", "priority": 1 },
+  { "id": "b-004", "ko": "네 / 아니요", "ja": "はい / いいえ", "kana": "はい / いいえ", "romaji": "hai / iie", "category": "basics", "priority": 1 },
+  { "id": "r-001", "ko": "두 명이에요", "ja": "二人です", "kana": "ふたりです", "romaji": "futari desu", "category": "restaurant", "priority": 1 },
+  { "id": "r-002", "ko": "주문할게요", "ja": "注文お願いします", "kana": "ちゅうもんおねがいします", "romaji": "chuumon onegaishimasu", "category": "restaurant", "priority": 1 },
+  { "id": "r-003", "ko": "이거 주세요", "ja": "これをください", "kana": "これをください", "romaji": "kore o kudasai", "category": "restaurant", "priority": 1 },
+  { "id": "r-004", "ko": "물 좀 주세요", "ja": "お水をください", "kana": "おみずをください", "romaji": "omizu o kudasai", "category": "restaurant", "priority": 1 },
+  { "id": "r-005", "ko": "계산해주세요", "ja": "お会計お願いします", "kana": "おかいけいおねがいします", "romaji": "okaikei onegaishimasu", "category": "restaurant", "priority": 1 },
+  { "id": "t-001", "ko": "이거 난바 가나요?", "ja": "これは難波に行きますか?", "kana": "これはなんばにいきますか?", "romaji": "kore wa namba ni ikimasu ka", "category": "transit", "priority": 1 },
+  { "id": "t-002", "ko": "표는 어디서 사나요?", "ja": "切符はどこで買えますか?", "kana": "きっぷはどこでかえますか?", "romaji": "kippu wa doko de kaemasu ka", "category": "transit", "priority": 2 },
+  { "id": "c-001", "ko": "봉투 필요 없어요", "ja": "袋はいりません", "kana": "ふくろはいりません", "romaji": "fukuro wa irimasen", "category": "convenience", "priority": 1 },
+  { "id": "c-002", "ko": "따뜻하게 해주세요", "ja": "温めてください", "kana": "あたためてください", "romaji": "atatamete kudasai", "category": "convenience", "priority": 2 },
+  { "id": "h-001", "ko": "체크인 하고 싶어요", "ja": "チェックインお願いします", "kana": "チェックインおねがいします", "romaji": "chekku-in onegaishimasu", "category": "hotel", "priority": 1 },
+  { "id": "d-001", "ko": "여기서 사진 찍어 주실래요?", "ja": "ここで写真を撮ってもらえますか?", "kana": "ここでしゃしんをとってもらえますか?", "romaji": "koko de shashin o totte moraemasu ka", "category": "directions", "priority": 2 }
+]

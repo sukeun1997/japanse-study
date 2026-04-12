@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { loadPhrases, priorityOne } from "../lib/phrases";
+import { useStore } from "../lib/store";
 
 const TRIP_START = new Date("2026-04-30T00:00:00+09:00");
 
@@ -14,7 +15,10 @@ export default function Home() {
   const [totalP1, setTotalP1] = useState(0);
   useEffect(() => { loadPhrases().then((p) => setTotalP1(priorityOne(p).length)); }, []);
 
+  const progress = useStore((s) => s.progress);
+  const known = Object.values(progress).filter((p) => p.status === "known").length;
   const dLeft = daysUntil(TRIP_START);
+  const pct = totalP1 > 0 ? (known / totalP1) * 100 : 0;
 
   return (
     <div className="p-4 space-y-6">
@@ -26,11 +30,14 @@ export default function Home() {
 
       <section>
         <div className="mb-2 flex items-baseline justify-between">
-          <h3 className="text-sm font-semibold">오늘의 학습</h3>
-          <span className="text-xs text-gray-500">0 / 10장</span>
+          <h3 className="text-sm font-semibold">외운 문장</h3>
+          <span className="text-xs text-gray-500">{known} / {totalP1 || "—"}</span>
         </div>
         <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-neutral-800">
-          <div className="h-full w-0 rounded-full bg-sky-500 transition-all" />
+          <div
+            className="h-full rounded-full bg-sky-500 transition-all"
+            style={{ width: `${pct}%` }}
+          />
         </div>
         <Link
           to="/study"
@@ -38,10 +45,6 @@ export default function Home() {
         >
           ▶ 이어서 공부
         </Link>
-      </section>
-
-      <section>
-        <div className="text-sm">외운 문장 <span className="font-bold">0</span> / {totalP1 || "—"}</div>
       </section>
     </div>
   );

@@ -1,7 +1,7 @@
 export type CategoryId =
   | "basics" | "restaurant" | "transit" | "convenience"
   | "hotel"  | "shopping"   | "directions" | "numbers"
-  | "emergency" | "kansai";
+  | "emergency" | "small-talk";
 
 export const CATEGORIES: { id: CategoryId; label: string; emoji: string }[] = [
   { id: "basics",      label: "인사·기초",   emoji: "👋" },
@@ -11,9 +11,9 @@ export const CATEGORIES: { id: CategoryId; label: string; emoji: string }[] = [
   { id: "hotel",       label: "호텔",        emoji: "🏨" },
   { id: "shopping",    label: "쇼핑",        emoji: "🛍" },
   { id: "directions",  label: "길 묻기",     emoji: "🗺" },
-  { id: "numbers",     label: "숫자",        emoji: "🔢" },
+  { id: "numbers",     label: "숫자·돈",     emoji: "🔢" },
   { id: "emergency",   label: "응급",        emoji: "🚑" },
-  { id: "kansai",      label: "칸사이벤",    emoji: "⭐️" },
+  { id: "small-talk",  label: "스몰토크",    emoji: "💬" },
 ];
 
 export type Phrase = {
